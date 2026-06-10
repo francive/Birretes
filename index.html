@@ -3,23 +3,245 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regalo Sorpresa</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Diseña tu Birrete Ideal 🎓</title>
+    <style>
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #a29bfe;
+            --dark: #2d3436;
+            --light: #f9f9f9;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            color: var(--dark);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: var(--primary);
+        }
+
+        .intro {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .base-price {
+            background: var(--secondary);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .option-group {
+            margin-bottom: 25px;
+        }
+
+        .option-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--light);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .option-item:hover {
+            border-color: var(--secondary);
+        }
+
+        .option-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--primary);
+            cursor: pointer;
+        }
+
+        .details {
+            flex-grow: 1;
+            margin-left: 15px;
+        }
+
+        .price-tag {
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .total-box {
+            background: var(--dark);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .total-box h3 {
+            margin: 0;
+            font-size: 1rem;
+            color: #ccc;
+        }
+
+        .total-amount {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #00cec9;
+            margin: 10px 0;
+        }
+
+        .btn-whatsapp {
+            display: block;
+            width: 100%;
+            background: #25D366;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            box-sizing: border-box;
+            transition: background 0.3s;
+        }
+
+        .btn-whatsapp:hover {
+            background: #20ba5a;
+        }
+    </style>
 </head>
 <body>
-    <div class="message-left" id="messageLeft">
-        Te amo 💖
-    </div>
-    <div class="message-right" id="messageRight">
-        Discúlpame
+
+<div class="container">
+    <h1>🎓 Diseña tu Birrete</h1>
+    <p class="intro">Personaliza tu birrete a tu gusto. El precio se actualizará automáticamente abajo.</p>
+
+    <div class="base-price">
+        ✨ Birrete Base: $10.00
     </div>
 
-    <div class="gift-content" id="giftContent">
-        <h1>¡Mira qué sorpresa!</h1> 
-        <p>¡Aquí está tu nueva maquinita de coser!</p> 
-        <img src="sewing-machine.png" alt="Máquina de Coser" width="200">
-    </div>
+    <h2>Añade tus extras:</h2>
     
-    <script src="script.js"></script>
+    <div class="option-group">
+        <label class="option-item">
+            <input type="checkbox" class="addon" data-name="Letras en Foami Metalizado" data-price="3.00">
+            <div class="details">
+                <strong>Letras en Foami Metalizado</strong>
+                <br><small>Nombre o frase personalizada</small>
+            </div>
+            <span class="price-tag">+$3.00</span>
+        </label>
+
+        <label class="option-item">
+            <input type="checkbox" class="addon" data-name="Flores de Papel (x3)" data-price="4.50">
+            <div class="details">
+                <strong>Flores de Papel (Pack de 3)</strong>
+                <br><small>Colores a elección</small>
+            </div>
+            <span class="price-tag">+$4.50</span>
+        </label>
+
+        <label class="option-item">
+            <input type="checkbox" class="addon" data-name="Luz LED integrada" data-price="5.00">
+            <div class="details">
+                <strong>Luces LED</strong>
+                <br><small>¡Para que brilles en la entrega!</small>
+            </div>
+            <span class="price-tag">+$5.00</span>
+        </label>
+
+        <label class="option-item">
+            <input type="checkbox" class="addon" data-name="Borde de Pedrería" data-price="2.50">
+            <div class="details">
+                <strong>Borde de Pedrería / Perlas</strong>
+                <br><small>Detalle elegante alrededor</small>
+            </div>
+            <span class="price-tag">+$2.50</span>
+        </label>
+    </div>
+
+    <div class="total-box">
+        <h3>PRECIO TOTAL ESTIMADO</h3>
+        <div class="total-amount">$<span id="total">10.00</span></div>
+    </div>
+
+    <a href="#" id="whatsapp-link" target="_blank" class="btn-whatsapp">
+        📱 Enviar Pedido por WhatsApp
+    </a>
+</div>
+
+<script>
+    const basePrice = 10.00;
+    const checkboxes = document.querySelectorAll('.addon');
+    const totalDisplay = document.getElementById('total');
+    const whatsappLink = document.getElementById('whatsapp-link');
+    
+    // CAMBIA ESTE NÚMERO por el de tu novia (incluye código de país, ej: 584120000000)
+    const telefonoNovia = "584120000000"; 
+
+    function calculateTotal() {
+        let total = basePrice;
+        let selectedAddons = [];
+
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                const price = parseFloat(checkbox.getAttribute('data-price'));
+                const name = checkbox.getAttribute('data-name');
+                total += price;
+                selectedAddons.push(`- ${name} (+$${price.toFixed(2)})`);
+            }
+        });
+
+        // Actualizar el número en la pantalla
+        totalDisplay.textContent = total.toFixed(2);
+
+        // Crear el mensaje de WhatsApp tipo factura
+        let mensaje = `¡Hola! Quiero encargar un birrete personalizado 🎓%0A%0A`;
+        mensaje += `*Detalles del pedido:*%0A`;
+        mensaje += `- Birrete Base ($10.00)%0A`;
+        
+        if (selectedAddons.length > 0) {
+            mensaje += selectedAddons.join('%0A') + `%0A`;
+        } else {
+            mensaje += `(Sin accesorios adicionales)%0A`;
+        }
+        
+        mensaje += `%0A*Total estimado: $${total.toFixed(2)}*`;
+
+        // Actualizar el enlace del botón
+        whatsappLink.href = `https://wa.me/${telefonoNovia}?text=${mensaje}`;
+    }
+
+    // Escuchar cuando el usuario marca o desmarca algo
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', calculateTotal);
+    });
+
+    // Ejecutar al cargar la página por primera vez
+    calculateTotal();
+</script>
+
 </body>
 </html>
